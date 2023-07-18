@@ -1,4 +1,5 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable max-classes-per-file */
 import { Book } from './books.js';
 
 const $cards = document.querySelector('.div-remove');
@@ -68,20 +69,5 @@ export class Books {
       localStorage.setItem('books', JSON.stringify(this.books));
       this.displayBooks();
     }
-  }
-
-  showDate() {
-    const date = new Date();
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      hour12: true,
-    };
-    this.date = date.toLocaleString('en-US', options);
-    return this.date;
   }
 }

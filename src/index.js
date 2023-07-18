@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable max-classes-per-file */
+import { DateTime } from 'luxon';
 import { Books, $authorInput, $titleInput } from '../modules/app.js';
 
 const $listLink = document.querySelector('#list');
@@ -7,7 +8,6 @@ const $contactLink = document.querySelector('#contact');
 const $addLink = document.querySelector('#add-new');
 const $h1 = document.querySelector('#h1');
 const $addButton = document.querySelector('#add');
-const $date = document.getElementById('date');
 
 const myBooks = new Books();
 
@@ -54,6 +54,9 @@ $contactLink.addEventListener('click', () => {
   $listLink.style.color = 'black';
 });
 
-setInterval(() => {
-  $date.textContent = myBooks.showDate();
-}, 1000);
+document.addEventListener('DOMContentLoaded', () => {
+  const $date = document.querySelector('#date');
+  const now = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
+
+  $date.textContent = now;
+});
