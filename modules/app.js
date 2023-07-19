@@ -6,11 +6,9 @@ const $cards = document.querySelector('.div-remove');
 export const $titleInput = document.querySelector('#title');
 export const $authorInput = document.querySelector('#author');
 
-const book = new Book();
-
 export class Books {
   constructor() {
-    this.books = book;
+    this.books = [];
     this.$removeButtons = null;
     this.initializeRemoveButtons();
   }
@@ -61,10 +59,7 @@ export class Books {
 
   addBook() {
     if ($titleInput.value !== '' && $authorInput.value !== '') {
-      const book = {
-        title: $titleInput.value,
-        author: $authorInput.value,
-      };
+      const book = new Book($titleInput.value, $authorInput.value);
       this.books.push(book);
       localStorage.setItem('books', JSON.stringify(this.books));
       this.displayBooks();
